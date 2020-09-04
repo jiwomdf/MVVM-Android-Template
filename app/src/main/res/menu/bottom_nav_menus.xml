@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:id="@+id/menu_firstFragment"
+        android:title="@string/first_fragment"
+        android:icon="@drawable/ic_android_24dp"
+        />
+
+    <item
+        android:id="@+id/menu_secondFragment"
+        android:title="@string/second_fragment"
+        android:icon="@drawable/ic_android_24dp"
+        />
+</menu>
