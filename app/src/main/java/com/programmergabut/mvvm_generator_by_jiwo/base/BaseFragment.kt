@@ -14,7 +14,7 @@ import com.programmergabut.mvvm_generator_by_jiwo.util.SharedPrefUtil
 
 abstract class BaseFragment<VM : ViewModel, DB : ViewDataBinding>(private val layout : Int): Fragment() {
 
-    protected val viewModel: ViewModel by lazy { ViewModelProvider(this).get(getViewModelClass()) }
+    protected val viewModel: VM by lazy { ViewModelProvider(this).get(getViewModelClass()) }
     protected lateinit var binding : DB
     private lateinit var sharedPrefUtil: SharedPrefUtil
 

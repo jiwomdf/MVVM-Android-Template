@@ -12,7 +12,7 @@ import javax.inject.Inject
 
 class Repository @Inject constructor(private val someService: SomeService): BaseRepository() {
 
-    fun doLogin(user : User) : Deferred<SomeResponse> {
+    fun doLoginAsync(user : User) : Deferred<SomeResponse> {
         return CoroutineScope(Dispatchers.IO).async {
             lateinit var response : SomeResponse
             try{

@@ -1,10 +1,13 @@
 package com.programmergabut.mvvm_generator_by_jiwo.base
 
+import android.content.Context
 import android.content.Intent
 import android.os.Bundle
 import android.view.LayoutInflater
+import android.view.MotionEvent
 import android.view.View
 import android.view.ViewGroup
+import android.view.inputmethod.InputMethodManager
 import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
 import androidx.databinding.ViewDataBinding
@@ -18,7 +21,7 @@ import com.programmergabut.mvvm_generator_by_jiwo.util.SharedPrefUtil
 
 abstract class BaseActivity<VM : ViewModel, DB : ViewDataBinding>(private val layout : Int): AppCompatActivity() {
 
-    protected val viewModel: ViewModel by lazy { ViewModelProvider(this).get(getViewModelClass()) }
+    protected val viewModel: VM by lazy { ViewModelProvider(this).get(getViewModelClass()) }
     protected lateinit var binding : DB
     private lateinit var root : ViewGroup
     private lateinit var loader : View
@@ -39,6 +42,12 @@ abstract class BaseActivity<VM : ViewModel, DB : ViewDataBinding>(private val la
         sharedPrefUtil = SharedPrefUtil(this)
 
         setListener()
+    }
+
+    override fun dispatchTouchEvent(ev: MotionEvent?): Boolean {
+        val inputMethodManager = getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
+        inputMethodManager.hideSoftInputFromWindow(currentFocus?.windowToken, 0)
+        return super.dispatchTouchEvent(ev)
     }
 
     open protected fun setListener(){

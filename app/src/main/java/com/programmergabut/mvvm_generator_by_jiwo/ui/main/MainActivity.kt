@@ -2,12 +2,15 @@ package com.programmergabut.mvvm_generator_by_jiwo.ui.main
 
 import android.os.Bundle
 import android.view.View
-import androidx.navigation.findNavController
+import androidx.lifecycle.Observer
 import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.ui.setupWithNavController
 import com.programmergabut.mvvm_generator_by_jiwo.R
 import com.programmergabut.mvvm_generator_by_jiwo.base.BaseActivity
+import com.programmergabut.mvvm_generator_by_jiwo.base.BaseViewModel
+import com.programmergabut.mvvm_generator_by_jiwo.base.BaseViewModel.Companion.ERROR
+import com.programmergabut.mvvm_generator_by_jiwo.base.BaseViewModel.Companion.SUCCESS
 import com.programmergabut.mvvm_generator_by_jiwo.databinding.ActivityMainBinding
 import dagger.hilt.android.AndroidEntryPoint
 
@@ -48,6 +51,7 @@ class MainActivity : BaseActivity<MainViewModel, ActivityMainBinding>(R.layout.a
 
     override fun setListener() {
         super.setListener()
+
     }
 
 }
