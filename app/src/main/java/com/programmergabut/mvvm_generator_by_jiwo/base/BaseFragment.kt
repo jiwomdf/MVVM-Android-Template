@@ -10,6 +10,9 @@ import androidx.databinding.ViewDataBinding
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
+import com.google.android.material.bottomsheet.BottomSheetDialog
+import com.programmergabut.mvvm_generator_by_jiwo.R
+import com.programmergabut.mvvm_generator_by_jiwo.databinding.LayoutBottomSheetBinding
 import com.programmergabut.mvvm_generator_by_jiwo.util.SharedPrefUtil
 
 abstract class BaseFragment<VM : ViewModel, DB : ViewDataBinding>(private val layout : Int): Fragment() {
@@ -33,7 +36,6 @@ abstract class BaseFragment<VM : ViewModel, DB : ViewDataBinding>(private val la
         // Shared Preference
         context?.let { context -> sharedPrefUtil = SharedPrefUtil(context) }
 
-
         return binding.root
     }
 
@@ -44,6 +46,23 @@ abstract class BaseFragment<VM : ViewModel, DB : ViewDataBinding>(private val la
         startActivity(intent)
         if(isFinish)
             activity?.finish()
+    }
+
+    protected fun showBottomSheet(title : String = resources.getString(R.string.text_error), description : String = "",
+                                  btnText: String = "Oke", isCancelable : Boolean = true, isFinish : Boolean = false) {
+        val bottomSheetDialog = BottomSheetDialog(requireContext())
+
+        val bsBinding : LayoutBottomSheetBinding = DataBindingUtil.inflate(LayoutInflater.from(requireContext()), R.layout.layout_bottom_sheet, null, false)
+        bsBinding.title = title
+        bsBinding.description = description
+        bsBinding.btnText = btnText
+        bsBinding.btnOk.setOnClickListener{
+            bottomSheetDialog.dismiss()
+        }
+
+        bottomSheetDialog.setCancelable(isCancelable)
+        bottomSheetDialog.setContentView(bsBinding.root)
+        bottomSheetDialog.show()
     }
 
     open fun setListener(){

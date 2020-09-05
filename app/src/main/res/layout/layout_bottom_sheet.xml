@@ -11,6 +11,11 @@
         <variable
             name="description"
             type="String" />
+
+        <variable
+            name="btnText"
+            type="String" />
+
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -18,9 +23,7 @@
         android:layout_height="wrap_content"
         android:paddingTop="20dp"
         android:paddingBottom="20dp"
-        android:background="@color/colorAccent"
-        app:layout_behavior="com.google.android.material.bottomsheet.BottomSheetBehavior"
-        >
+        app:layout_behavior="com.google.android.material.bottomsheet.BottomSheetBehavior">
 
         <LinearLayout
             android:layout_width="0dp"
@@ -28,32 +31,31 @@
             android:orientation="vertical"
             android:padding="20dp"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintLeft_toLeftOf="parent"
-            >
+            app:layout_constraintLeft_toLeftOf="parent">
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@{title}"
                 tools:text="This is Title"
-                android:textSize="20sp"
-                />
+                android:textSize="20sp" />
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@{description}"
                 android:layout_marginTop="10dp"
-                tools:text="This is description"
-                />
+                tools:text="This is description" />
 
             <Button
                 android:id="@+id/btn_ok"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Oke"
-                android:layout_marginTop="20dp"
-                />
+                android:background="@drawable/rounded_grey_button"
+                android:padding="15dp"
+                android:text="@{btnText}"
+                tools:text="Understood"
+                android:layout_marginTop="20dp" />
 
         </LinearLayout>
 

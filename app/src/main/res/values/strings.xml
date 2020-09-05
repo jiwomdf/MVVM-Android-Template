@@ -13,4 +13,6 @@
     <string name="by_katili">By Katili Jiwo Adi Wiyono</string>
     <string name="background">background</string>
     <string name="simple_login_fragment">Simple Login Fragment</string>
+    <string name="this_login_functionality_show_the_best_practice_in_using_the_architecture">this login functionality show the best practice in using the architecture</string>
+    <string name="understood">Understood</string>
 </resources>

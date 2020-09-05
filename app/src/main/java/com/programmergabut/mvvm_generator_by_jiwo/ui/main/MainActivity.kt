@@ -34,8 +34,7 @@ class MainActivity : BaseActivity<MainViewModel, ActivityMainBinding>(R.layout.a
 
             binding.bottomMenu.setupWithNavController(navController)
 
-            navHostFragment.findNavController()
-                .addOnDestinationChangedListener { _, destination, _ ->
+            navController.addOnDestinationChangedListener { _, destination, _ ->
                     when(destination.id){
                         R.id.menu_firstFragment, R.id.menu_secondFragment ->
                             binding.bottomMenu.visibility = View.VISIBLE

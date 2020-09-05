@@ -16,7 +16,7 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import com.google.android.material.bottomsheet.BottomSheetDialog
 import com.programmergabut.mvvm_generator_by_jiwo.R
-import com.programmergabut.mvvm_generator_by_jiwo.databinding.LayoutErrorBinding
+import com.programmergabut.mvvm_generator_by_jiwo.databinding.LayoutBottomSheetBinding
 import com.programmergabut.mvvm_generator_by_jiwo.util.SharedPrefUtil
 
 abstract class BaseActivity<VM : ViewModel, DB : ViewDataBinding>(private val layout : Int): AppCompatActivity() {
@@ -75,18 +75,22 @@ abstract class BaseActivity<VM : ViewModel, DB : ViewDataBinding>(private val la
             finish()
     }
 
-    protected fun   showError(title : String = resources.getString(R.string.text_error), description : String = "", isCancelable : Boolean = true, isFinish : Boolean = false) {
+    protected fun showBottomSheet(title : String = resources.getString(R.string.text_error), description : String = "", btnText: String = "Oke",
+                                  isCancelable : Boolean = true, isFinish : Boolean = false) {
+
         val bottomSheetDialog = BottomSheetDialog(this)
-        val errorBinding : LayoutErrorBinding = DataBindingUtil.inflate(LayoutInflater.from(this), R.layout.layout_error, null, false)
-        errorBinding.title = title
-        errorBinding.description = description
-        errorBinding.btnOk.setOnClickListener{
+        val bsBinding : LayoutBottomSheetBinding = DataBindingUtil.inflate(LayoutInflater.from(this), R.layout.layout_bottom_sheet, null, false)
+        bsBinding.title = title
+        bsBinding.description = description
+        bsBinding.btnText = btnText
+
+        bsBinding.btnOk.setOnClickListener{
             bottomSheetDialog.dismiss()
             if(isFinish)
                 finish()
         }
         bottomSheetDialog.setCancelable(isCancelable)
-        bottomSheetDialog.setContentView(errorBinding.root)
+        bottomSheetDialog.setContentView(bsBinding.root)
         bottomSheetDialog.show()
     }
 

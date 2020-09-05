@@ -15,7 +15,6 @@
         android:layout_height="match_parent"
         android:background="@color/colorDarkBackgroundGrey">
 
-
         <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -39,14 +38,14 @@
                 android:id="@+id/tv_login_title_description"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/by_katili"
+                android:text="@string/simple_login_fragment"
                 android:textColor="@color/colorPrimary"
                 android:textSize="17sp" />
 
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="@string/simple_login_fragment"
+                android:text="@string/this_login_functionality_show_the_best_practice_in_using_the_architecture"
                 android:textColor="@color/colorWhite" />
 
         </LinearLayout>
@@ -58,12 +57,12 @@
             android:layout_marginLeft="22dp"
             android:layout_marginRight="22dp"
             android:layout_marginBottom="50dp"
-            android:background="@drawable/rounded_white_bg"
+            android:background="@drawable/rounded_bg"
             android:orientation="vertical"
             android:padding="26dp">
 
             <EditText
-                android:id="@+id/editText3"
+                android:id="@+id/et_username"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:autofillHints="@string/username"
@@ -72,10 +71,10 @@
                 android:hint="@string/username"
                 android:inputType="text"
                 android:padding="15dp"
-                android:text="@{viewModel.user.username}" />
+                android:text="@={viewModel.user.username}" />
 
             <EditText
-                android:id="@+id/editText"
+                android:id="@+id/et_password"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="20dp"
@@ -83,18 +82,29 @@
                 android:background="@drawable/rounded_white_edit_text"
                 android:drawableEnd="@drawable/ic_baseline_lock_24"
                 android:hint="@string/password"
-                android:inputType="text"
+                android:inputType="textPassword"
                 android:padding="15dp"
-                android:text="@{viewModel.user.password}" />
+                android:text="@={viewModel.user.password}" />
 
             <Button
+                android:id="@+id/btn_login"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="20dp"
                 android:padding="15dp"
                 android:text="@string/login"
-                android:textColor="@color/colorWhite" />
+                android:background="@drawable/rounded_grey_button"
+                android:textColor="@color/colorDarkBackgroundGrey" />
         </LinearLayout>
+
+        <ProgressBar
+            android:id="@+id/loading"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:padding="160dp"
+            android:visibility="gone"
+            android:background="@color/halfTransparentBackground"
+            android:layout_centerInParent="true" />
 
     </RelativeLayout>
 
